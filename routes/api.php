@@ -3,26 +3,24 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+use App\Http\Controllers\api\clientesController;
+
+/*Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth:sanctum');*/
 
-Route::get('/usuarios', function(){
-    return 'Obteniendo lista de usuarios';
+Route::get('/clientes', [clientesController::class, 'index']);
+
+Route::get('/clientes{id}', function(){
+    return 'Obteniendo un solo clientes';
 });
 
-Route::get('/usuarios{id}', function(){
-    return 'Obteniendo un solo usuarios';
+Route::post('/clientes', [clientesController::class, 'store']);
+
+Route::put('/clientes/{id}', function(){
+    return 'Actualizando clientes';
 });
 
-Route::post('/usuarios', function(){
-    return 'Creando usuarios';
-});
-
-Route::put('/usuarios/{id}', function(){
-    return 'Actualizando usuarios';
-});
-
-Route::delete('/usuarios/{id}', function(){
-    return 'Borrando usuarios';
+Route::delete('/clientes/{id}', function(){
+    return 'Borrando clientes';
 });
